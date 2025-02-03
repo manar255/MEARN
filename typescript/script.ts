@@ -67,25 +67,25 @@ greating<string>('Manar');
 
 
 /*        decorator         */
-function first() {
-    console.log("first(): factory evaluated");
-    return function (target: any, propertyKey: string) {
-      console.log("first(): called");
-    };
-  }
+// function first() {
+//     console.log("first(): factory evaluated");
+//     return function (target: any, propertyKey: string) {
+//       console.log("first(): called");
+//     };
+//   }
    
-  function second() {
-    console.log("second(): factory evaluated");
-    return function (target: any, propertyKey: string) {
-      console.log("second(): called");
-    };
-  }
+//   function second() {
+//     console.log("second(): factory evaluated");
+//     return function (target: any, propertyKey: string) {
+//       console.log("second(): called");
+//     };
+//   }
    
-  class ExampleClass {
-    @first()
-    @second()
-    method() {}
-  }
+//   class ExampleClass {
+//     @first()
+//     @second()
+//     method() {}
+//   }
 
 
 /*        task 2         */
