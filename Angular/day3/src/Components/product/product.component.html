@@ -1,0 +1,112 @@
+<!-- <div>
+    <div class="container p-5 ">
+       
+    
+          <div class="card" style="width: 18rem;">
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">
+                    <img src={{store.logo}} alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    {{store.name}}
+                  </a>
+                </div>
+              </nav>
+            <img src={{product.Img}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{product.Name}}</h5>
+              <p class="card-text">ID: {{product.ID}} <br> Quantity: {{product.Quantity}} <br>Price: {{product.Price}} <br>CateogryID: {{product.CateogryID}}</p>
+               <a href="#" class="btn btn-primary">Go somewhere</a> 
+            </div>
+          </div>
+    </div>
+    </div> -->
+<!-- 
+    {
+    id: number;
+    title :string;
+    description:string;
+    price:number;
+    category:number;
+    images:string[];
+    seller:{};
+}
+     -->
+
+<!-- <app-sidebar (selectCategory)="filterProductByCategory($event)"></app-sidebar> -->
+<div>
+    <div class="container p-5 ">
+        <div class="row justify-content-center gap-3">
+            <nav class="navbar bg-body-tertiary">
+
+                <div class="container-fluid">
+                    @if(buynowFlag){
+                    <a class="navbar-brand " href="#">
+                        <img src={{store.logo}} alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                        {{store.name}}
+                    </a>
+                    }
+                    @else {
+                    <a class="navbar-brand text-body-secondary " href="#">
+                        Thanks {{clientName}}
+                    </a>
+                    }
+                    <button class="btn btn-success" (click)="buynowToggle()">Buy now</button>
+                </div>
+            </nav>
+            @for(pro of filteredProduct ;track pro.id){
+            <div class="card p-0 col-3 " [ngStyle]="{'background-color': pro.quantity==1 ? '#FFFBD8' : ''}" appProductStyle="h-600"  >
+                <img [src]="pro.images[0]" height="200" alt="" class="p-0">
+
+                <div class="card-body">
+                    <div class="d-flex gap-3">
+                        @if(pro.discount!=0){
+
+                        <h4 class="badge bg-danger rounde-0">we offer discount {{pro.discount}}%</h4>
+                        }
+                        @switch (pro.quantity) {
+                        @case (0) {
+                        <h4 class="badge bg-danger rounde-0">out of the stock</h4>
+
+                        }
+                        @case (1) {
+                        <h4 class="badge bg-warning rounde-0">last 1 item</h4>
+
+                        }
+                        @case (2) {
+                        <h4 class="badge bg-warning rounde-0">last 2 item</h4>
+
+                        }
+                        @default {
+                        <h4 class="badge bg-success rounde-0">available</h4>
+                        }
+                        }
+                    </div>
+                    <h5 class="card-title">{{pro.title}}</h5>
+                    <p>{{pro.price}}</p>
+                    <p>{{pro.description}}</p>
+                    <p class="text-secondary">{{pro.seller.name}} {{pro.seller.rating}} {{pro.seller.reviews}} </p>
+                    <!-- category -->
+
+                    <p class="text-warning">category:
+                        @switch (pro.category) {
+                        @case (1) {
+                        "Home & Living"
+                        }
+                        @case (2) {
+                        "Jewelry"
+                        }
+                        @case (3) {"Accessories"}
+                        }
+                    </p>
+
+                    <!-- quantity -->
+                    <p class="text-primary">quantity:{{pro.quantity}}</p>
+                    <!-- buy now button -->
+                    <button class="btn btn-primary" (click)="buynow(pro.id)" [disabled]="pro.quantity==0">Buy
+                        now</button>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

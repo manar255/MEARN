@@ -1,0 +1,36 @@
+<div class="flex-shrink-0 p-3" style="width: 280px;">
+  <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+    <svg class="bi pe-none me-2" width="30" height="24">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-5 fw-semibold">Filter</span>
+  </a>
+  <ul class="list-unstyled ps-0">
+    <li class="mb-1">
+      <label for="">category</label>
+      <div class="form-check">
+        <input class="form-check-input mt-0" type="radio" id="category" name="fav_language" value=-1 [(ngModel)]="selectedCategory" >
+        <label class="form-check-label" for="category">All</label><br>
+        @for(c of category;track c.id){
+        <input class="form-check-input mt-0" type="radio" id="category" name="fav_language" [value]='c.id' [(ngModel)]="selectedCategory">
+        <label class="form-check-label" for="html">{{c.name}}</label><br>
+        
+        }
+      </div>
+      
+    </li>
+    <li class="mb-1">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Price</span>
+       
+        <input class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" type="number" [(ngModel)]='selectedPrice' >
+      </div>
+     
+    </li>
+    <li class="mb-1">
+
+    </li>
+    <li class="border-top my-3"></li>
+
+  </ul>
+</div>

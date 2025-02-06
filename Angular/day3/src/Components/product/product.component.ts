@@ -1,28 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Store } from '../../Models/store';
 import { IProduct } from '../../Models/iproduct';
 import { DiscountOffer } from '../../Models/discount-offer';
 import { ICategory } from '../../Models/icategory';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from './../sidebar/sidebar.component';
+import { ProductStyleDirective } from '../../Directives/product-style.directive';
 
 
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,ProductStyleDirective],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
-export class ProductComponent {
+export class ProductComponent implements OnChanges {
   discount: any = DiscountOffer.Discount20Percent;
   store: Store = new Store('electrnic', ['qenq', 'cairo'], 'https://www.creativefabrica.com/wp-content/uploads/2019/02/Online-shop-shopping-shop-logo-by-DEEMKA-STUDIO-3.jpg')
   clientName: string = "Manar Khaled"
   buynowFlag: boolean = true;
-  selectedCategory: number = -1;
+  @Input() selectedCategory: number = -1;
+  @Input() selectedPrice: number = 0;
   filteredProduct: IProduct[] = [];
   products: IProduct[] = []
   category: ICategory[] = []
+
+  @Output() addProduct: EventEmitter<IProduct> = new EventEmitter<IProduct>;
+
   constructor() {
     this.category = [
       {
@@ -102,8 +108,8 @@ export class ProductComponent {
         category: 3,
         quantity: 2,
         images: [
-          "https://i.etsystatic.com/14859358/r/il/21d17a/6537707252/il_1588xN.6537707252_ces4.jpg",
-          "https://i.etsystatic.com/14859358/r/il/f80584/5229370033/il_1588xN.5229370033_30sf.jpg"
+          "https://i.etsystatic.com/52839475/r/il/145be0/6620704772/il_680x540.6620704772_pkjp.jpg",
+          "https://i.etsystatic.com/52839475/r/il/0c13c2/6668795807/il_1588xN.6668795807_o16z.jpg",
         ],
         seller: {
           name: "VintageScribes",
@@ -184,11 +190,27 @@ export class ProductComponent {
         }
       }
     ];
-    
-    this.filteredProduct = this.products
 
+    this.filteredProduct = this.filterProductByCategory(this.selectedCategory);
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    let x: IProduct[] = [];
+    let y: IProduct[] = [];
+
+    x = this.filterProductByCategory(this.selectedCategory)
+
+
+    y = this.filterProductsByPrice(this.selectedPrice);
+
+    console.log(y);
+
+    // return array of anly same product of x and y
+    this.filteredProduct = x.filter(productX =>
+      y.includes(productX)
+    );
+  }
+
 
 
   buynowToggle() {
@@ -197,13 +219,21 @@ export class ProductComponent {
 
   buynow(id: number) {
     let p = this.products.find(p => p.id == id);
-    if (p && p.quantity) p.quantity--;
+    if (p && p.quantity) {
+      p.quantity--;
+      this.addProduct.emit(p);
+    }
   }
 
-  set filterProduct(value: number) {
-    // console.log(value);
-    this.filteredProduct = (value == -1) ? this.products : this.products.filter(p => p.category == value)
-    // console.log(this.filteredProduct);
+  filterProductByCategory(id: number): IProduct[] {
+
+    return (id == -1) ? this.products : this.products.filter(p => p.category == id)
   }
+  filterProductsByPrice(price: number): IProduct[] {
+    if (price) return this.products.filter(p => p.price <= price);
+    return this.products;
+  }
+
+
 }
 
