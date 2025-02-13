@@ -1,0 +1,46 @@
+
+<div class="d-flex">
+    <app-sidebar class="col-2" (selectCategory)="SendCategoryId($event)" (selectPrice)="SendSelectedPrice($event)"></app-sidebar>
+    <app-product class="col-10" [selectedCategory]="selectedCategory" [selectedPrice]="selectedPrice" (addProduct)="addProductToCart($event)"></app-product>
+     <!-- <router-outlet></router-outlet> -->
+</div>
+<div>
+        <h2>Cart</h2>
+        <div>
+            <table class="table table-primary ">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">price</th>
+                    <th scope="col">quantity</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">total</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                 @for (item of cart; track $index) {
+                    <tr>
+                        <th scope="row">{{$index}}</th>
+                        <td>{{item.product.title}}</td>
+                        <td>{{item.product.price}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.date|date:'shortTime'}}</td>
+                        <td>{{item.quantity*item.product.price}}</td>
+
+                        
+
+                    </tr>
+                 }
+                 <tr>
+                  
+                  <td colspan="2">Your credit card number is</td>
+                  <td>{{creditCart|creditCard}}</td>
+                </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>

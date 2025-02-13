@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "day1-lab": "file:",
     "lodash": "^4.17.21"
   }
 }
