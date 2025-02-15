@@ -1,5 +1,6 @@
 <div class="container-fluid p-0 shadow">
   <!-------------------black header--------------------------->
+  @if(!isBasic){
   <div
     class="bg-black text-white p-2 d-flex align-items-center justify-content-around"
   >
@@ -7,13 +8,19 @@
     <p class="mb-0">WELCOME OFFER 10% OFF</p>
     <p class="mb-0">FREE RETURNS</p>
   </div>
+  }
   <!-------------------nav header--------------------------->
   <div
-    class="navbar navbar-expand-lg bg-white d-flex justify-content-between align-items-center p-4 text-black position-sticky"
+    class="navbar navbar-expand-lg bg-white d-flex justify-content-between align-items-center p-3 text-black position-sticky"
   >
-  <button class="bg-white d-lg-none d-flex">
-    <img src="https://img.icons8.com/?size=30&id=8113&format=png&color=000000" alt="">
-  </button>
+  @if(!isBasic){
+    <button class="bg-white d-lg-none d-flex">
+      <img
+        src="https://img.icons8.com/?size=30&id=8113&format=png&color=000000"
+        alt=""
+      />
+    </button>}
+   
     <!-- logo -->
     <a class="ps-2 navbar-brand" href="#">
       <div>
@@ -23,6 +30,7 @@
         />
       </div>
     </a>
+    @if(!isBasic){
     <!-- nav -->
     <div class="d-lg-flex d-none">
       <ul class="navbar-nav gap-3">
@@ -32,7 +40,9 @@
         <a class="nav-link" href=""><li class="nav-item fw-bold">MEN</li></a>
         <a class="nav-link" href=""><li class="nav-item">SPORTS</li></a>
         <a class="nav-link" href=""><li class="nav-item">LIFESTYLE</li></a>
-        <a class="nav-link" href=""><li class="nav-item fw-medium text-danger ">END OF SEASON SALE</li></a>
+        <a class="nav-link" href=""
+          ><li class="nav-item fw-medium text-danger">END OF SEASON SALE</li></a
+        >
       </ul>
     </div>
 
@@ -47,10 +57,12 @@
       </div>
       <!-- user icon -->
       <div class="d-flex align-items-center gap-3">
-        <img
-          src="https://www.adidas.com.eg/on/demandware.static/Sites-adidas-EG-Site/-/default/dw3db8cdbf/images/profile.svg"
-          alt=""
-        />
+        <a [routerLink]="['login']">
+          <img
+            src="https://www.adidas.com.eg/on/demandware.static/Sites-adidas-EG-Site/-/default/dw3db8cdbf/images/profile.svg"
+            alt=""
+          />
+        </a>
         <img
           src="https://img.icons8.com/?size=28&id=16076&format=png&color=000000"
           alt=""
@@ -61,42 +73,6 @@
         />
       </div>
     </div>
+  }
   </div>
 </div>
-
-<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav> -->

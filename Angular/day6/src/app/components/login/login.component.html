@@ -1,1 +1,86 @@
-<p>login works!</p>
+<div class="container">
+  <div class="row gap-3 justify-content-center p-5">
+    <div class="col-5 d-flex flex-column gap-4 align-items-start">
+      <h2 class="text-uppercase">Login</h2>
+      <form class="col-12 d-flex flex-column gap-4 align-items-start">
+        <div class="d-flex flex-column gap-4 col-11">
+          <div class="d-flex flex-column gap-2">
+            <label for="email">Email</label>
+            <div class="npt-box"><input type="text" /></div>
+          </div>
+          <div class="d-flex flex-column gap-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <label for="password">Password</label>
+              <div>
+                <i class="fa-regular fa-eye"></i> Show
+                <!-- <i class="fa-regular fa-eye-slash"></i> -->
+              </div>
+            </div>
+            <div class="npt-box"><input type="password" /></div>
+          </div>
+          <div class="d-flex gap-2">
+            <input type="checkbox" /><label for="agree">
+              Keep me logged in. <a href="#">More info</a></label
+            >
+          </div>
+        </div>
+        <button class="black-btn d-flex gap-4 align-items-center">Login <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+      <div class="col-11 d-flex align-items-center justify-content-between">
+        <button class=" bg-white  btn-outlite-black col-6 m-1 d-flex justify-content-between align-items-center">Facbook <img src="https://img.icons8.com/?size=35&id=118497&format=png&color=000000" alt=""></button>
+        <button class="bg-white  btn-outlite-black col-6  m-1 d-flex justify-content-between align-items-center">google <img src="https://img.icons8.com/?size=35&id=17949&format=png&color=000000" alt=""></button>
+      </div>
+      <p>I have read and accepted <a href="">adiClub Terms & Conditions</a> and the <a href="#">adidas Privacy Notice</a></p>
+    </div>
+
+    <div class="col-5 d-flex flex-column gap-3 align-items-start">
+      <h2>JOIN ADICLUB. GET REWARDED TODAY.</h2>
+      <p>
+        As an adiClub member you get rewarded with what you love for doing what
+        you love. Sign up today and receive immediate access to these Level 1
+        benefits:
+      </p>
+      <div class="p-2 ps-4 d-flex flex-column gap-2">
+        <div class="d-flex align-items-center gap-2">
+          <img
+            src="https://img.icons8.com/?size=20&id=fVnC5GYxLG15&format=png&color=000000"
+            alt=""
+          />
+          <p class="p-0 m-0">A 10% off voucher for your next purchase</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <img
+            src="https://img.icons8.com/?size=20&id=fVnC5GYxLG15&format=png&color=000000"
+            alt=""
+          />
+          <p class="p-0 m-0">Access to Members Only products and sales</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <img
+            src="https://img.icons8.com/?size=20&id=fVnC5GYxLG15&format=png&color=000000"
+            alt=""
+          />
+          <p class="p-0 m-0">Access to adidas Running and Training apps</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <img
+            src="https://img.icons8.com/?size=20&id=fVnC5GYxLG15&format=png&color=000000"
+            alt=""
+          />
+          <p class="p-0 m-0">Special offers and promotions</p>
+        </div>
+      </div>
+      <p>
+        Join now to start earning points, reach new levels and unlock more
+        rewards and benefits from adiClub.
+      </p>
+      <button class="black-btn d-flex gap-4 align-items-center" [routerLink]="['/register']" routerLinkActive="router-link-active">
+        Register now <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <img
+        src="https://eu.idp.adidas.com/assets/images/adidas/universal-login/adiclub.jpg"
+        class="img-fluid"
+      />
+    </div>
+  </div>
+</div>
