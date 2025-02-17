@@ -1,0 +1,52 @@
+.hero {
+  background-image: url(./Images/cover.png);
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap:50px;
+  padding-left: 100px;
+}
+.hero > h1 {
+  width: 40%;
+  font-size: 60px;
+  color: #0b1c39;
+}
+.gray-btn {
+  background-color: #4a4a4b;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+}
+.gray-btn:hover {
+  background-color: #4a4a4bbc;
+}
+.products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:45px;
+    padding: 60px;
+    
+}
+.cards{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.card>h5{
+    font-size: 20px;
+}
+.card>p{
+    color: #ea0000;
+}
