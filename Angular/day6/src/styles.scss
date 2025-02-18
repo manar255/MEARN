@@ -17,3 +17,20 @@
 .black-btn:hover{
     color: #858585;
 }
+.containar-white-btn{
+    border: solid 1px white;
+    width:fit-content;
+}
+.white-btn{
+    background-color: #fff;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 12px 25px;
+   transform: translate(-3px,-3px);
+    // margin:50px;
+
+}
+.white-btn:hover{
+    color: #858585;
+}
