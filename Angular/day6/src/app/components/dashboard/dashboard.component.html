@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 bg-light p-3">
+      <ul class="fs-5 d-flex flex-column gap-1">
+        <a routerLink="/dashboard" routerLinkActive="router-link-active"
+          ><li>products</li></a
+        >
+        <hr />
+        <a routerLink="categories"><li>categores</li></a>
+      </ul>
+    </div>
+    <div class="col-9">
+      <div class="container">
+        <div class="p-5 d-flex flex-column gap-4 align-items-start">
+          @if (true) {<button
+            class="black-btn align-self-end"
+            data-bs-toggle="modal"
+            data-bs-target="#addproduct"
+          >
+            Add product</button
+          >} @else {<button class="black-btn align-self-end">
+            Add category</button
+          >}
+
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="addproduct"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add product</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name</label>
+            <input type="text" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Description</label
+            >
+            <input type="text" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Price</label>
+            <input type="text" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Sizes</label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+                checked
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                Checked checkbox
+              </label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Images</label>
+
+            <input
+              class="form-control"
+              type="file"
+              id="formFileMultiple"
+              multiple
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="white-btn-border white-btn px-3 py-2 " data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class=" black-btn">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>

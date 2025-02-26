@@ -5,6 +5,9 @@
     outline: none;
     box-sizing: border-box;
 }
+ul{
+    list-style: none;
+}
 .black-btn{
     background-color: #000;
     color: white;
@@ -37,4 +40,10 @@
 
 .white-btn-border{
  border: #000 solid 1px;
+}
+.fs-11{
+    font-size: 11px;
+}
+.fs-13{
+    font-size: 13px;
 }

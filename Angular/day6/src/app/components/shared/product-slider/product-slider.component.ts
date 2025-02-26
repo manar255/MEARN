@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IProduct } from '../../../models/product';
 
 @Component({
   selector: 'app-product-slider',
@@ -7,6 +8,11 @@ import { Component, Input } from '@angular/core';
   styleUrl: './product-slider.component.scss'
 })
 export class ProductSliderComponent {
-@Input() title:string='';
-@Input() products:
+@Input() title:string='lol';
+
+
+constructor(){
+
+}
+
 }
