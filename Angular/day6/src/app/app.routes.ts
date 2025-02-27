@@ -5,6 +5,9 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { WomenComponent } from './components/women/women.component';
+import { MenComponent } from './components/men/men.component';
+import { KidsComponent } from './components/kids/kids.component';
 
 export const routes: Routes = [
     {
@@ -22,17 +25,17 @@ export const routes: Routes = [
     {
         path:'dashboard',
         component:DashboardComponent,
-        children:[
-            {
-                path:'',
-                component:ProductsComponent
-            },
-            {
-                path:'categories',
-                component:CategoriesComponent
-
-            }
-        ]
-
+    },
+    {
+        path:'women',
+        component:WomenComponent
+    },
+    {
+        path:'men',
+        component:MenComponent
+    },
+    {
+        path:'kids',
+        component:KidsComponent
     }
 ];

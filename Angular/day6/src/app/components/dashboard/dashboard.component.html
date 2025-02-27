@@ -2,33 +2,43 @@
   <div class="row">
     <div class="col-3 bg-light p-3">
       <ul class="fs-5 d-flex flex-column gap-1">
-        <a routerLink="/dashboard" routerLinkActive="router-link-active"
-          ><li>products</li></a
-        >
+        
+          <li  (click)="changePage('product')">products</li>
         <hr />
-        <a routerLink="categories"><li>categores</li></a>
+        <li (click)="changePage('category')">categores</li>
       </ul>
     </div>
     <div class="col-9">
       <div class="container">
         <div class="p-5 d-flex flex-column gap-4 align-items-start">
-          @if (true) {<button
+          @if (currentComponent=='product') {<button
             class="black-btn align-self-end"
             data-bs-toggle="modal"
             data-bs-target="#addproduct"
           >
             Add product</button
-          >} @else {<button class="black-btn align-self-end">
+          >} @else {<button
+            class="black-btn align-self-end"
+            data-bs-toggle="modal"
+            data-bs-target="#addCategoryModal"
+          >
             Add category</button
           >}
 
-          <router-outlet></router-outlet>
+          @if (currentComponent=='product'){
+            <app-products [products]="products" [isAdmin]="true"></app-products>
+          }
+          @else{
+            <app-categories [categories]="categoties"></app-categories>
+          }
+
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- add product modal -->
 <div
   class="modal fade"
   id="addproduct"
@@ -51,50 +61,124 @@
         <form>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Name</label>
-            <input type="text" class="form-control" id="recipient-name" />
+            <input type="text" class="form-control" id="recipient-name" [(ngModel)]="newProduct.name" name="productName" />
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label"
               >Description</label
             >
-            <input type="text" class="form-control" id="recipient-name" />
+            <input type="text" class="form-control" id="recipient-name"[(ngModel)]="newProduct.description" name="productDescription" />
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Price</label>
-            <input type="text" class="form-control" id="recipient-name" />
+            <input type="text" class="form-control" id="recipient-name" [(ngModel)]="newProduct.price" name="productPrice"/>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Sizes</label>
+            @for (s of sizes; track $index) {
             <div class="form-check">
               <input
                 class="form-check-input"
                 type="checkbox"
-                value=""
+                value="{{ s }}"
                 id="flexCheckChecked"
-                checked
+                (change)="toggleSize(s, $event)"name="productSizes"
               />
               <label class="form-check-label" for="flexCheckChecked">
-                Checked checkbox
+                {{ s }}
               </label>
             </div>
+            }
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Images</label>
+            <label for="recipient-name" class="col-form-label"
+              >Categories</label
+            >
+            @for (c of categoties; track $index) {
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [value]="c._id"
+                id="flexCheckChecked"
+                (change)="toggleCategory(c._id, $event)"
+                 name="productCategories" 
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                {{ c.name }}
+              </label>
+            </div>
+            }
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">image url</label>
+            <input type="text" class="form-control" id="recipient-name"[(ngModel)]="newProduct.images" name="productImages" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="white-btn-border white-btn px-3 py-2"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="button" class="black-btn" data-bs-dismiss="modal" (click)="addProduct()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- add catogory modal -->
+<div
+  class="modal fade"
+  id="addCategoryModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="">Add category</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name</label>
             <input
+              type="text"
               class="form-control"
-              type="file"
-              id="formFileMultiple"
-              multiple
+              id="recipient-name"
+              [(ngModel)]="newCategory"
+              name="newCategory"
             />
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="white-btn-border white-btn px-3 py-2 " data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="white-btn-border white-btn px-3 py-2"
+          data-bs-dismiss="modal"
+        >
           Close
         </button>
-        <button type="button" class=" black-btn">Send message</button>
+        <button
+          type="button"
+          class="black-btn"
+          data-bs-dismiss="modal"
+          (click)="addCategory()"
+        >
+          Add
+        </button>
       </div>
     </div>
   </div>

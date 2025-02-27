@@ -1,1 +1,16 @@
-<p>categories works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">category</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (c of categories; track $index) {
+    <tr>
+      <th scope="row">{{ $index + 1 }}</th>
+      <td>{{c.name}}</td>
+    </tr>
+    }
+  </tbody>
+</table>
