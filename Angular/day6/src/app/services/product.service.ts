@@ -27,6 +27,9 @@ export class ProductService {
   deleteProduct(productId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${productId}`);
   }
+  editProduct(productId:any,productData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${productId}`, productData);
+  }
   getProductsByQuery(query: any): Observable<any[]> {
     let params = new HttpParams();
     for (const key in query) {

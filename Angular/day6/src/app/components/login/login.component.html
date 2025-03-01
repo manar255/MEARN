@@ -2,11 +2,18 @@
   <div class="row gap-3 justify-content-center p-5 flex-column flex-lg-row">
     <div class="col-lg-5 col-12 d-flex d-flex flex-column gap-4 align-items-start">
       <h2 class="text-uppercase">Login</h2>
-      <form class="col-12 d-flex flex-column gap-4 align-items-start">
+      <form class="col-12 d-flex flex-column gap-4 align-items-start" [formGroup]="loginData">
         <div class="d-flex flex-column gap-4 col-11">
           <div class="d-flex flex-column gap-2">
             <label for="email">Email</label>
-            <div class="npt-box"><input type="text" /></div>
+            <div class="npt-box"><input type="email" formControlName="email" class="col-12"/></div>
+            @if(loginData.controls.email.invalid&&(loginData.controls.email.dirty||loginData.controls.email.touched)){
+              @if (loginData.controls.email.errors?.['required']) {
+                <span class="text-danger">email is required</span>
+              }@if (loginData.controls.email.errors?.['email']) {
+                <span class="text-danger">invaild email</span>
+              }
+            }
           </div>
           <div class="d-flex flex-column gap-2">
             <div class="d-flex justify-content-between align-items-center">
@@ -16,15 +23,21 @@
                 <!-- <i class="fa-regular fa-eye-slash"></i> -->
               </div>
             </div>
-            <div class="npt-box"><input type="password" /></div>
+            <div class="npt-box"><input type="password" formControlName="password" class="col-12"/></div>
+            @if(loginData.controls.password.invalid&&(loginData.controls.password.dirty||loginData.controls.password.touched)){
+              @if (loginData.controls.password.errors?.['required']) {
+                <span class="text-danger">Password is required</span>
+              }
+            }
           </div>
           <div class="d-flex gap-2">
             <input type="checkbox" /><label for="agree">
+             
               Keep me logged in. <a href="#">More info</a></label
             >
           </div>
         </div>
-        <button class="black-btn d-flex gap-4 align-items-center">Login <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="black-btn d-flex gap-4 align-items-center" (click)="login()">Login <i class="fa-solid fa-arrow-right"></i></button>
       </form>
       <div class="col-11 d-flex align-items-center justify-content-between">
         <button class=" bg-white  btn-outlite-black col-6 m-1 d-flex justify-content-between align-items-center">Facbook <img src="https://img.icons8.com/?size=35&id=118497&format=png&color=000000" alt=""></button>

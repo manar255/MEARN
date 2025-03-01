@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row gap-3 justify-content-center p-5 flex-column flex-lg-row">
     <div class="col-lg-5 col-12 d-flex flex-column gap-4 align-items-start">
@@ -25,19 +26,33 @@
       </div>
       <p class="fw-light">Or</p>
 
-      <form class="col-12 d-flex flex-column gap-4 align-items-start" [formGroup]="userData">
+      <form class="col-12 d-flex flex-column gap-4 align-items-start" [formGroup]="userData" (ngSubmit)="register()">
         <div class="d-flex flex-column gap-4 col-11">
          
           <div class="d-flex flex-column gap-3">
             <h4 class="text-uppercase fw-bolder">your name</h4>
             <div class="d-flex flex-column gap-3">
               <div class="d-flex flex-column gap-2">
-                <label for="firstName">Frist name</label>
+                <label for="firstName">First name</label>
                 <div class="npt-box"><input type="text" formControlName="firstName"/></div>
+                @if(userData.controls.firstName.invalid&&(userData.controls.firstName.dirty||userData.controls.firstName.touched)){
+                  @if (userData.controls.firstName.errors?.['required']) {
+                    <span class="text-danger">first name is required</span>
+                  }@if (userData.controls.firstName.errors?.['minlength']) {
+                    <span class="text-danger">first name must be at least 5 charcters </span>
+                  }
+                }
               </div>
               <div class="d-flex flex-column gap-2">
                 <label for="lastName">Last name</label>
                 <div class="npt-box"><input type="text" formControlName="lastName"/></div>
+                @if(userData.controls.lastName.invalid&&(userData.controls.lastName.dirty||userData.controls.lastName.touched)){
+                  @if (userData.controls.lastName.errors?.['required']) {
+                    <span class="text-danger">last name is required</span>
+                  }@if (userData.controls.lastName.errors?.['minlength']) {
+                    <span class="text-danger">last name must be at least 5 charcters </span>
+                  }
+                }
               </div>
               <div class="d-flex flex-column gap-2">
                 <label for="gender">Gender</label>
@@ -48,7 +63,13 @@
                   <div class="d-flex gap-2">
                     <input type="radio" name="gender" formControlName="gender" value="female"/> Female
                   </div>
+  
                 </div>
+                @if(userData.controls.gender.invalid&&(userData.controls.gender.dirty||userData.controls.gender.touched)){
+                  @if (userData.controls.gender.errors?.['required']) {
+                    <span class="text-danger">gender is required</span>
+                  }
+                }
               </div>
             </div>
           </div>
@@ -58,10 +79,24 @@
               <div class="d-flex flex-column gap-2">
                 <label for="email">Email</label>
                 <div class="npt-box"><input type="email" formControlName="email"/></div>
+                @if(userData.controls.email.invalid&&(userData.controls.email.dirty||userData.controls.email.touched)){
+                  @if (userData.controls.email.errors?.['required']) {
+                    <span class="text-danger">email is required</span>
+                  }@if (userData.controls.email.errors?.['email']) {
+                    <span class="text-danger">invaild email</span>
+                  }
+                }
               </div>
               <div class="d-flex flex-column gap-2">
                 <label for="Phone">Phone</label>
-                <div class="npt-box"><input type="text" formControlName="phone"/></div>
+                <div class="npt-box"><input type="tel" formControlName="phone"/></div>
+                @if(userData.controls.phone.invalid&&(userData.controls.phone.dirty||userData.controls.phone.touched)){
+                  @if (userData.controls.phone.errors?.['required']) {
+                    <span class="text-danger">phone is required</span>
+                  }@if (userData.controls.phone.errors?.['pattern']) {
+                    <span class="text-danger">invaild phone numder</span>
+                  }
+                }
               </div>
               <div class="d-flex flex-column gap-2">
                 <div class="d-flex justify-content-between align-items-center">
@@ -70,12 +105,19 @@
                     <i class="fa-regular fa-eye"></i> Show
                     <!-- <i class="fa-regular fa-eye-slash"></i> -->
                   </div>
+                 
                 </div>
                 <div class="npt-box"><input type="password" formControlName="password"/></div>
-                <p class="">
-                  Must be at least 8 characters, with an uppercase, lowercase,
-                  one number and a special character
-                </p>
+                @if(userData.controls.password.invalid&&(userData.controls.password.dirty||userData.controls.password.touched)){
+                  @if (userData.controls.password.errors?.['required']) {
+                    <span class="text-danger">Password is required</span>
+                  }@if (userData.controls.password.errors?.['minlength']) {
+                    <span class="text-danger">password must be at least 8 charcters</span>
+                  }
+                  @if (userData.controls.password.errors?.['pattern']) {
+                    <span class="text-danger">Password must contain uppercase, lowercase, one number and a special character</span>
+                  }
+                }
               </div>
               <div class="d-flex gap-2">
                 <input type="checkbox" /><label for="agree">Yes, I am over 18 years old
@@ -89,7 +131,7 @@
             </div>
           </div>
         </div>
-        <button class="black-btn d-flex gap-4 align-items-center" (click)="register()">
+        <button class="black-btn d-flex gap-4 align-items-center" type="submit">
           Register <i class="fa-solid fa-arrow-right"></i>
         </button>
       </form>

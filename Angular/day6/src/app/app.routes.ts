@@ -8,6 +8,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { WomenComponent } from './components/women/women.component';
 import { MenComponent } from './components/men/men.component';
 import { KidsComponent } from './components/kids/kids.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,7 @@ export const routes: Routes = [
     {
         path:'dashboard',
         component:DashboardComponent,
+        canActivate:[authGuard]
     },
     {
         path:'women',

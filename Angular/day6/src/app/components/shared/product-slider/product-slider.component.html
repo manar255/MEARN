@@ -1,1 +1,63 @@
 <h2>{{title}}</h2>
+<div class="container" #container>
+	<div class="left" *ngIf="totalPages > 1" (click)="currentPage != 1 && changePage(-1)" [ngClass]="{'disabled':currentPage === 1}"></div>
+	<div class="cards" [ngClass]="{'w-100': totalPages === 1}">
+		<div class="overflow" [ngStyle]="{'width': overflowWidth, 'left': pagePosition}">
+			<div class="card" *ngFor="let p of products; let index = index" [ngStyle]="{'width': cardWidth}">
+				<div class="col-3 p-2">
+                    <div class="position-relative p-0">
+                      @if (isAdmin) {
+                      <div class="position-absolute d-flex justify-content-between col-12 p-2">
+                        <!-- delete button -->
+                        <button
+                          class="rounded-circle bg-danger text-white d-flex justify-content-center align-items-center -btn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
+                         
+                        >
+                          <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <!-- edit button -->
+                        <button
+                          class="rounded-circle bg-primary text-white d-flex justify-content-center align-items-center -btn"
+                          data-bs-toggle="modal"
+                            data-bs-target="#editproduct"
+                         
+                        >
+                          <i class="fa-solid fa-trash"></i>
+                        </button>
+                      </div>
+                      }@else {
+                      <div class="position-absolute d-flex justify-content-between col-12 p-2">
+                        <button
+                          class="rounded-circle d-flex justify-content-center align-items-center -btn"
+                        >
+                          <img
+                            src="https://www.adidas.com.eg/on/demandware.static/Sites-adidas-EG-Site/-/default/dwe293135b/images/QuickView%20Icon.png"
+                            alt=""
+                          />
+                        </button>
+                        <button
+                          class="rounded-circle d-flex justify-content-center align-items-center -btn"
+                        >
+                          <img
+                            src="https://www.adidas.com.eg/on/demandware.static/Sites-adidas-EG-Site/-/default/dw416a3007/images/wishlist-empty.svg"
+                            alt=""
+                          />
+                        </button>
+                      </div>
+                      }
+                      <img src="{{ p.images[0] }}" alt="" class="img-fluid" />
+                      <div class="p-2 fw-light fs-13 d-flex flex-column gap-2">
+                        <p class="m-0">{{ p.name }}</p>
+                        <p class="fw-normal m-0">EGP {{ p.price }}</p>
+                        <p class="text-secondary">{{ p.description }}</p>
+                      </div>
+                    </div>
+                  </div>
+			</div>
+		</div>
+	</div>
+	<div class="right" *ngIf="totalPages > 1" (click)="currentPage != totalPages && changePage(+1)"
+		[ngClass]="{'disabled':currentPage === totalPages}"></div>
+</div>
