@@ -18,12 +18,19 @@ const getTodoById = async (id) => {
 
 // for lab
 const updateTitleTodoById = async (id,title) => {
-   await todosModel.findOneAndUpdate({ _id: id }, { title }, { new: true })
+   return await todosModel.findOneAndUpdate({ _id: id }, { title }, { new: true })
 }
 
 
 const getUserTodos = async (userId) => {
-  await todosModel.find({ userId })
+
+  const todos = await todosModel.find({ userId })
+  
+  
+  if (todos.length === 0) {
+    return []
+  }
+  return todos
 }
 
 
