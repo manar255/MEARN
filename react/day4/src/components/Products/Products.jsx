@@ -1,13 +1,18 @@
 import {useEffect, useState } from "react";
 import ProductCard from "./productCard";
+import { useDispatch, useSelector } from "react-redux";
+import { setItems } from "../../store/slices/productSlices";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  // console.log(useSelector(state=>state.products.items));
   
+  const products = useSelector(state=>state.products.items)||[]
+  const wishlist = useSelector(state=>state.wishlist.wishlist);
+  const dispatch =useDispatch()
   useEffect(() => {
     fetch("http://localhost:3000/products")
       .then((res) => res.json())
-      .then((data) => console.log(data) || setProducts(data));
+      .then((data) =>  dispatch(setItems(data)));
       
   }, []);
 
@@ -17,7 +22,9 @@ const Products = () => {
         <div className="d-flex flex-wrap gap-3 justify-content-center p-5 "> 
           {products.map((product) => (
            <>
-            <ProductCard key={product.id} product={product}/>
+           {wishlist.find(i => i.id === product.id) ? (
+              <ProductCard key={product.id} product={product} isFavorate={true} />
+            ) : <ProductCard key={product.id} product={product} isFavorate={false} />}
            </>
           ))}
         </div>

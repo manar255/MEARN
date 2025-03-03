@@ -8,8 +8,8 @@ describe("2-message component integration testing:", () => {
     let component:MessagesComponentForLab;
     let fixture:ComponentFixture<MessagesComponentForLab>
     let messageService:MessageService;
-    beforeEach(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async() => {
+        await TestBed.configureTestingModule({
             imports:[MessagesComponentForLab]
         }).compileComponents();
 
@@ -37,7 +37,7 @@ describe("2-message component integration testing:", () => {
         fixture.detectChanges();
 
         const messages = fixture.debugElement.query(By.css('#container')).queryAll(By.css('.msg'));
-        
+
         expect(messages.length).toBe(2);
         expect(messages[0].nativeElement.textContent).toContain('Message 1');
         expect(messages[1].nativeElement.textContent).toContain('Message 2');

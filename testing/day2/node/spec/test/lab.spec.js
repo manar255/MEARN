@@ -5,6 +5,7 @@ const supertest = require("supertest");
 let req = supertest(app);
 describe("lab testing:", () => {
   let newUser, userInDB;
+
   beforeEach(async () => {
     newUser = { name: "Ali", email: "asd@asd.com", password: "asdasd" };
     let res = await req.post("/user/signup").send(newUser);
@@ -65,17 +66,19 @@ describe("lab testing:", () => {
       let user2, token2;
       await req
         .post("/user/signup")
-        .send({ name: "Manar", email: "asd@asd.com", password: "asdasd" });
-    
+        .send({ name: "Manar", email: "asd123@asd.com", password: "asdasd" });
+
       user2 = await req
         .post("/user/login")
-        .send({ name: "Manar", email: "asd@asd.com", password: "asdasd" });
+        .send({ name: "Manar", email: "asd123@asd.com", password: "asdasd" });
+        
       token2 = user2.body.data;
-    
+      
+      
       let res = await req.get("/todo/user").set({ authorization: token2 });
-    
-      console.log(res.body); // Log the response body to inspect its structure
-    
+      
+      console.log('res.body',res.body);
+
       expect(res.status).toBe(200);
       expect(res.body.message).toBe("Couldn't find any todos ");
     });

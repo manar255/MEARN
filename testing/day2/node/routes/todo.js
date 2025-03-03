@@ -35,6 +35,7 @@ router.get("/user",auth, async (req, res,next) => {
   try {
     var todos = await getUserTodos( req.id )
    
+    // console.log(todos);
     
     todos.length > 0 && res.status(200).json({ data: todos })
     todos.length == 0 && res.status(200).json({ message: "Couldn't find any todos " })
