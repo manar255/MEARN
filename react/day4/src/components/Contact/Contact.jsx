@@ -47,8 +47,7 @@ const Contact = () => {
                       type="text"
                       name="name"
                       className={`form-control ${errors.name && touchedFields.name ? 'is-invalid' : ''}`}
-                      placeholder="Your name"
-                      {...register("name", { required: true, minLength: 3 })}
+                      placeholder="Your name"t  {...register("name", { required: true, minLength: 3 })}
                     />
                     {errors.name && touchedFields.name && <p className="invalid-feedback">Full Name is required and should be at least 3 characters</p>}
                   </div>

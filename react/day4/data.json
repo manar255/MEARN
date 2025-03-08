@@ -247,126 +247,8 @@
       "description": "الرياضة أسلوب حياة داخل النادي وخارجه. تتبنى تيشيرت أديداس اليومية هذه نفس الفكرة..."
     }
   ],
-  "wishlist": [
-    {
-      "id": "2",
-      "title": "Teach Not Preach Workout",
-      "image": "https://i.ibb.co/gLchnJBL/product2.jpg",
-      "price": "EGP 2,099.00",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL",
-        "3XL",
-        "XL Tall",
-        "2XL Tall",
-        "3XL Tall",
-        "4XL Tall",
-        "5XL Tall"
-      ],
-      "availableSizes": [
-        "M",
-        "L",
-        "2XL",
-        "3XL Tall"
-      ],
-      "description": "إذا انخفضت الكتف خلال تمرين القرفصاء بالبار، فستعرف ذلك مع تيشيرت التمارين من أديداس هذه..."
-    },
-    {
-      "id": "6",
-      "title": "Yoga Training",
-      "image": "https://i.ibb.co/C5npBY1s/product6.jpg",
-      "price": "EGP 1,125.00",
-      "sizes": [
-        "XS",
-        "L",
-        "2XL"
-      ],
-      "availableSizes": [
-        "XS",
-        "L"
-      ],
-      "description": "الرياضة أسلوب حياة داخل النادي وخارجه. تتبنى تيشيرت أديداس اليومية هذه نفس الفكرة..."
-    },
-    {
-      "id": "4",
-      "title": "DAME SHOW TEE",
-      "image": "https://i.ibb.co/r2PQkXGW/product4.jpg",
-      "price": "EGP 1,749.00",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ],
-      "availableSizes": [
-        "S",
-        "L",
-        "2XL"
-      ],
-      "description": "الرياضة أسلوب حياة داخل النادي وخارجه. تتبنى تيشيرت أديداس اليومية هذه نفس الفكرة..."
-    },
-    {
-      "id": "8",
-      "title": "Allover adidas Graphic Boyfriend",
-      "image": "https://i.ibb.co/ccGgCKK2/product8.jpg",
-      "price": "EGP 1,169.00",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "2XL"
-      ],
-      "availableSizes": [
-        "M",
-        "2XL"
-      ],
-      "description": "الرياضة أسلوب حياة داخل النادي وخارجه. تتبنى تيشيرت أديداس اليومية هذه نفس الفكرة..."
-    }
-  ],
-  "cart": [
-    {
-      "id": "4",
-      "title": "DAME SHOW TEE",
-      "image": "https://i.ibb.co/r2PQkXGW/product4.jpg",
-      "price": "EGP 1,749.00",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ],
-      "availableSizes": [
-        "S",
-        "L",
-        "2XL"
-      ],
-      "description": "الرياضة أسلوب حياة داخل النادي وخارجه. تتبنى تيشيرت أديداس اليومية هذه نفس الفكرة...",
-      "quantity": 3
-    },
-    {
-      "id": "5",
-      "title": "Global Running",
-      "image": "https://i.ibb.co/cX1vN4fK/product5.jpg",
-      "price": "EGP 2,499.00",
-      "sizes": [
-        "L",
-        "XL"
-      ],
-      "availableSizes": [
-        "L"
-      ],
-      "description": "الرياضة أسلوب حياة داخل النادي وخارجه. تتبنى تيشيرت أديداس اليومية هذه نفس الفكرة...",
-      "quantity": 2
-    }
-  ],
+  "wishlist": [],
+  "cart": [],
   "users": [
     {
       "id": "2c38",
@@ -377,6 +259,13 @@
     },
     {
       "id": "6ad1"
+    },
+    {
+      "id": "b509",
+      "firstName": "awab",
+      "lastName": "ail",
+      "email": "awab@gmail.com",
+      "password": "123456"
     }
   ],
   "mails": [
@@ -387,6 +276,14 @@
       "password": "12345678",
       "subject": "sub2",
       "message": "hello my devolper"
+    },
+    {
+      "id": "d1c2",
+      "name": "masakjksj",
+      "email": "manar@gmail.com",
+      "password": "12345678",
+      "subject": "sub1",
+      "message": "zkshsuhdddknldj"
     }
   ]
 }

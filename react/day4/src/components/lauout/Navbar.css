@@ -8,3 +8,7 @@ nav a{
     text-decoration: none;
     color: inherit;
 }
+.active-link{
+border-bottom: 3px solid white;
+padding-bottom: 7px;
+}

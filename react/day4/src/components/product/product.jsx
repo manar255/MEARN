@@ -5,15 +5,40 @@ const Product = () => {
   let { id } = useParams();
   let [Product, setProduct] = useState({ sizes: [], availableSizes: [] });
   useEffect(() => {
-    
-    
-    
     fetch(`http://localhost:3000/products/${id}`)
       .then((res) => res.json())
       .then((data) => console.log(data) || setProduct(data));
 
-
   }, []);
+
+  let getCart = async () => {
+    let res = await fetch("http://localhost:3000/cart");
+    return await res.json();
+  };
+  
+  let handleAddToCart = async(e, product) => {
+    e.stopPropagation();
+    let cart=await getCart();
+    let item = cart.find(i=>i.id==product.id);
+    if(item){
+      await fetch(`http://localhost:3000/cart/${item.id}`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({...item,quantity:item.quantity+1}),
+      });
+    }
+    else{
+      await fetch(`http://localhost:3000/cart`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({...product,quantity:1}),
+      });
+    }
+  };
   return (
     
     <div className="row py-3">
@@ -43,7 +68,7 @@ const Product = () => {
         </div>
        </div>
         <p className="text-end">{Product.description}</p>
-        <button className="btn btn-dark ">Add to Cart</button>
+        <button className="btn btn-dark " onClick={(e)=>handleAddToCart(e, Product)} >Add to Cart</button>
       </div>
     </div>
   );

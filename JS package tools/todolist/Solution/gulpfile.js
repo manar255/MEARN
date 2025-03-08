@@ -1,8 +1,8 @@
 const { src, dest, series, parallel, watch } = require("gulp");
 const chokidar=require('chokidar')
 const globs = {
-    html: "./**/*.html",
-    js: "./**/*.js",
+    html: "./*.html",
+    js: "./*.js",
     img: "./images/**/*",
   };
 
@@ -18,9 +18,9 @@ exports.h = htmlTask;
 
 const terser = require("gulp-terser");
 function jsTask() {
-  return src(globs.js, { sourcemaps: true })
+  return src(globs.js)
     .pipe(terser())
-    .pipe(dest("dist/assets/js", { sourcemaps: "." }));
+    .pipe(dest("dist/assets/js"));
 }
 
 exports.js = jsTask;
@@ -39,9 +39,5 @@ function imgTask() {
 }
 exports.img = imgTask;
 
-function watchTask() {
-    chokidar.watch(globs.html).on('change', htmlTask);
-    chokidar.watch(globs.js).on('change', jsTask);
-    chokidar.watch(globs.img).on('change', imgTask);
-}
-exports.default = series(parallel(htmlTask, jsTask, imgTask), watchTask);
+
+exports.default = parallel(htmlTask, jsTask, imgTask);

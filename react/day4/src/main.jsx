@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
+import '../node_modules/bootstrap/js/src/collapse.js'
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
