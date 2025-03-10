@@ -1,0 +1,26 @@
+{
+    "name": "tasks management",
+    "short_name": "todo",
+    "theme_color": "#110055",
+    "background_color": "#ffffff",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "./icons/Microsoft_To-Do_icon (3).png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "./icons/Microsoft_To-Do_icon (1).png",
+        "type": "image/png",
+        "sizes": "256x256"
+      },
+      {
+        "src": "./icons/Microsoft_To-Do_icon (2).png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
