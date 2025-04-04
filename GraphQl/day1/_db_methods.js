@@ -23,6 +23,72 @@ export const getAlbums = () => {
 export const getAlbum = (id) => {
   return Promise.resolve(db.Album.find((a) => a.id === id));
 };
+export const addSong = (songInput) => {
+  return new Promise((resolve, reject) => {
+    const artist = db.Artist.find((a) => a.id === songInput.artist_id);
+    if (!artist) {
+      reject(new Error("Artist not found."));
+      return;
+    }
+
+    const album = db.Album.find((a) => a.id === songInput.album_id);
+    if (!album) {
+      reject(new Error("Album not found."));
+      return;
+    }
+
+    const song = {
+      ...songInput,
+      id: Math.floor(Math.random() * 10000).toString(),
+    };
+    db.Song.push(song);
+    artist.song_ids.push(song.id);
+    album.song_ids.push(song.id);
+
+    resolve(song);
+  });
+};
+export const deleteSong = (id) => {
+  return new Promise((resolve, reject) => {
+    const song = db.Song.find((s) => s.id === id);
+    if (!song) {
+      reject(new Error("Song not found."));
+      return;
+    }
+
+    const artist = db.Artist.find((a) => a.id === song.artist_id);
+    if (artist) {
+      artist.song_ids = artist.song_ids.filter((songId) => songId !== id);
+    }
+
+    const album = db.Album.find((a) => a.id === song.album_id);
+    if (album) {
+      album.song_ids = album.song_ids.filter((songId) => songId !== id);
+    }
+
+    db.Song = db.Song.filter((s) => s.id !== id);
+    resolve(song);
+  });
+};
+export const updateSong = (id, title) => {
+  return new Promise((resolve, reject) => {
+    const oldSong = db.Song.find((s) => s.id === id);
+    if (!oldSong) {
+      reject(new Error("Song not found."));
+      return;
+    }
+
+    db.Song = db.Song.map((s) => {
+      if (s.id === id) {
+        return { ...s, title };
+      }
+      return s;
+    });
+    resolve(db.Song.find((s) => s.id === id));
+    
+  });
+};
+  
 
 // export const addMovie = (movieInput) => {
 //   return new Promise((resolve, reject) => {

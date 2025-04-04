@@ -4,10 +4,13 @@ getSong,getAlbums,
 getAlbum,
 getArtists,
 getArtist,
+addSong,
+deleteSong,
+updateSong,
 } from "./_db_methods.js";
 
 export const resolvers = {
-  // entry point
+  //entry point
   Query: {
     songs: function () {
       return getSongs();
@@ -29,6 +32,19 @@ export const resolvers = {
     },
   },
 
+  Mutation: {
+    addSong: function (_, args) {
+      console.log(args);
+      return addSong(args.songInput);
+    },
+    deleteSong: function (_, args) {
+      return deleteSong(args.id);
+    },
+    updateSong: function (_, args) {
+      console.log(args);
+      return updateSong(args.id, args.title);
+    },
+  },
   // Type relations (field resolvers) -----------------------------------------
 
   Song:{

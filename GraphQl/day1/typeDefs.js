@@ -45,4 +45,23 @@ export const typeDefs = gql`
     albums: [Album]
     album(id: ID!): Album
   }
+  # mutations => entry point for the graphql server
+  type Mutation {
+    addSong(songInput: AddSongInput!): Song
+    deleteSong(id: ID!): Song
+    updateSong(
+      id: ID!
+      title: String
+      artist_id: ID
+      album_id: ID
+      genres: [String!]
+    ): Song
+  }
+  # input types
+  input AddSongInput {
+    title: String!
+    artist_id: ID!
+    album_id: ID!
+    genres: [String!]!
+  }
 `;
