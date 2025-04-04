@@ -24,10 +24,11 @@ const SelectList = () => {
                     value={option}
                     label="Age"
                     onChange={handleChange}
+                    
                 >
-                    <MenuItem value={10}>option 1</MenuItem>
-                    <MenuItem value={20}>option 2</MenuItem>
-                    <MenuItem value={30}>option 3</MenuItem>
+                    <MenuItem value={"React"}>React</MenuItem>
+                    <MenuItem value={"Angular"}>Angular</MenuItem>
+                    <MenuItem value={"Vue"}>Vue</MenuItem>
                 </Select>
             </FormControl>
         </Box>
